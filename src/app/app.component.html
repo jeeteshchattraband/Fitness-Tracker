@@ -1,0 +1,16 @@
+<mat-sidenav-container>
+  <!--
+  The issue with #sidenav now is that it's a local reference that only sits locally. The elements of the newly created
+  components rely on having access to the sidenav. Therefore we need to be able to supply those components with a
+  reference to this sidenav.
+  -->
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
